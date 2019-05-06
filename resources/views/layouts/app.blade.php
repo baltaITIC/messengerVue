@@ -13,7 +13,10 @@
     <!-- Styles -->
 </head>
 <body>
-    <div id="app">
+    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+        {{ csrf_field() }}
+    </form>
+<div id="app">
 
     
   <b-navbar toggleable="lg" type="dark" variant="dark">
@@ -32,10 +35,10 @@
         <b-nav-item href="{{ route('register') }}">Registro</b-nav-item>
       
       @else
-        <b-nav-item-dropdown text="Username" right>
+        <b-nav-item-dropdown text=" {{ Auth::user()->name }} " right>
           <!-- Using 'button-content' slot -->
           <b-dropdown-item href="#">Profile</b-dropdown-item>
-          <b-dropdown-item href="#">Sign Out</b-dropdown-item>
+          <b-dropdown-item href="#" @click='logout'>Sign Out</b-dropdown-item>
         </b-nav-item-dropdown>
       </b-navbar-nav>
       @endguest
@@ -43,45 +46,7 @@
     
   </b-navbar>
 
-        <nav class="navbar navbar-default navbar-static-top">
-            <div class="container">
-
-                <div class="collapse navbar-collapse" id="app-navbar-collapse">
-
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="nav navbar-nav navbar-right">
-                        <!-- Authentication Links -->
-                        @guest
-                            <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
-                        @else
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                            Logout
-                                        </a>
-
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
-                                    </li>
-                                </ul>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
-            </div>
-        </nav>
-
-        @yield('content')
+@yield('content')
     </div>
 
     <!-- Scripts -->
