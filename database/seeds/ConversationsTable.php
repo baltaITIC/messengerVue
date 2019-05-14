@@ -36,5 +36,31 @@ class ConversationsTable extends Seeder
             'last_time' => null,
 
         ]);
+
+        Conversation::create([
+            
+            'user_id' => 1,
+            'contact_id' => 3,
+            
+            //'listen_notifications' => ,
+            //'has_blocked' => ,
+
+            'last_message' => null,
+            'last_time' => null,
+
+        ]);
+
+        Conversation::create([
+            
+            'user_id' => 3,
+            'contact_id' => 1,
+            
+            //'listen_notifications' => ,
+            //'has_blocked' => ,
+
+            'last_message' => null,
+            'last_time' => null,
+
+        ]);
     }
 }

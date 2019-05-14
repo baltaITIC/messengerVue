@@ -6,11 +6,11 @@
                 </b-img>
             </b-col>
             <b-col cols="6">
-                <p class="mb-1">{{ name }}</p>
-                <p class="text-muted small">{{ lastMessage }}</p>
+                <p class="mb-1">{{ conversation.contact_name }}</p>
+                <p class="text-muted small">{{ conversation.last_message }}</p>
             </b-col>
             <b-col cols="3">
-                <p class="text-muted small">{{ lastTime }}</p>
+                <p class="text-muted small">{{ conversation.last_time }}</p>
             </b-col>
         </b-row>
     </b-list-group-item>
@@ -18,18 +18,17 @@
 
 <script>
     export default {
-        props : [
-            'variant'
-        ],
+        props : 
+            {
+                variant : String,
+                conversation : Object
+                }
+        ,
         data(){
             return {
-                name:           "Juan Ramos",
-                lastMessage:    "Tu: Hasta Luego",
-                lastTime:       "1:37 p.m."
             };
         },
         mounted() {
-            console.log('Component mounted.')
         }
     }
 </script>
